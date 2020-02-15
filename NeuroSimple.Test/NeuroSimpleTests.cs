@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using NeuroSimple.Layers;
 using NUnit.Framework;
 
 namespace NeuroSimple.Test
@@ -52,17 +53,18 @@ namespace NeuroSimple.Test
 
             //Create two layers, one with 6 neurons and another with 1
             FullyConnected fc1 = new FullyConnected(3, 6, "relu");
-            FullyConnected fc2 = new FullyConnected(6, 1, "sigmoid");
 
             //Connect input by passing data from one layer to another
             fc1.Forward(x);
             x = fc1.Output;
             x.Print("FC1 Output");
 
+            FullyConnected fc2 = new FullyConnected(6, 1, "sigmoid");
             fc2.Forward(x);
             x = fc2.Output;
             x.Print("FC2 Output");
 
             Console.ReadLine();
         }
+    }
 }

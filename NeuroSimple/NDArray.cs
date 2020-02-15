@@ -140,12 +140,13 @@ namespace NeuroSimple
             {
                 for (int j = 0; j < Shape[1]; j++)
                 {
-                    Console.Write(this[i, j] + "  ");
+                    Console.Write(Math.Round(this[i, j], 2) + "  ");
                 }
 
                 Console.WriteLine();
             }
-            Console.WriteLine("-----------------------");
+
+            Console.WriteLine("-----------------------\n\n");
         }
 
         /// <summary>
@@ -166,6 +167,20 @@ namespace NeuroSimple
             return r;
         }
 
+        public static NDArray operator +(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a + t_b;
+        }
+
+        public static NDArray operator +(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a + b;
+        }
+
         /// <summary>
         /// Subtraction of two NDArray
         /// </summary>
@@ -182,6 +197,20 @@ namespace NeuroSimple
             }
 
             return r;
+        }
+
+        public static NDArray operator -(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a - t_b;
+        }
+
+        public static NDArray operator -(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a - b;
         }
 
         /// <summary>
@@ -202,6 +231,20 @@ namespace NeuroSimple
             return r;
         }
 
+        public static NDArray operator *(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a * t_b;
+        }
+
+        public static NDArray operator *(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a * b;
+        }
+
         /// <summary>
         /// Division of two NDArray
         /// </summary>
@@ -218,6 +261,20 @@ namespace NeuroSimple
             }
 
             return r;
+        }
+
+        public static NDArray operator /(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a / t_b;
+        }
+
+        public static NDArray operator /(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a / b;
         }
 
         /// <summary>
@@ -238,6 +295,20 @@ namespace NeuroSimple
             return r;
         }
 
+        public static NDArray operator ==(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a == t_b;
+        }
+
+        public static NDArray operator ==(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a == b;
+        }
+
         /// <summary>
         /// Check a != b between two tensor elementwise
         /// </summary>
@@ -254,6 +325,20 @@ namespace NeuroSimple
             }
 
             return r;
+        }
+
+        public static NDArray operator !=(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a != t_b;
+        }
+
+        public static NDArray operator !=(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a != b;
         }
 
         /// <summary>
@@ -274,6 +359,20 @@ namespace NeuroSimple
             return r;
         }
 
+        public static NDArray operator >(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a > t_b;
+        }
+
+        public static NDArray operator >(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a > b;
+        }
+
         /// <summary>
         /// Check a >= b between two tensor elementwise
         /// </summary>
@@ -290,6 +389,20 @@ namespace NeuroSimple
             }
 
             return r;
+        }
+
+        public static NDArray operator >=(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a >= t_b;
+        }
+
+        public static NDArray operator >=(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a >= b;
         }
 
         /// <summary>
@@ -310,6 +423,20 @@ namespace NeuroSimple
             return r;
         }
 
+        public static NDArray operator <(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a < t_b;
+        }
+
+        public static NDArray operator <(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a < b;
+        }
+
         /// <summary>
         /// Check a <= b between two tensor elementwise
         /// </summary>
@@ -326,6 +453,20 @@ namespace NeuroSimple
             }
 
             return r;
+        }
+
+        public static NDArray operator <=(NDArray a, double b)
+        {
+            NDArray t_b = new NDArray(a.Shape);
+            t_b.Fill(b);
+            return a <= t_b;
+        }
+
+        public static NDArray operator <=(double a, NDArray b)
+        {
+            NDArray t_a = new NDArray(b.Shape);
+            t_a.Fill(a);
+            return t_a <= b;
         }
 
         /// <summary>
