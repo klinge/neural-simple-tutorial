@@ -54,5 +54,21 @@ namespace NeuroSimple.Layers
                 Output = Activation.Output;
             }
         }
+
+        /// <summary>
+        /// Calculate the gradient of the layer. Usually a prtial derivative implemenation of the forward algorithm
+        /// </summary>
+        /// <param name="grad"></param>
+        public override void Backward(NDArray grad)
+        {
+            if(Activation != null)
+            {
+                Activation.Backward(grad);
+                grad = Activation.InputGrad;
+            }
+
+            InputGrad = Dot(grad, Parameters["w"].Transpose());
+            Grads["w"] = Dot(Input.Transpose(), grad);
+        }
     }
 }

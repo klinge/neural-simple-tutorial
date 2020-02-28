@@ -30,6 +30,16 @@ namespace NeuroSimple.Layers
         public Dictionary<string, NDArray> Parameters { get; set; }
 
         /// <summary>
+        /// Gradient of the Input
+        /// </summary>
+        public NDArray InputGrad { get; set; }
+
+        /// <summary>
+        /// List of all parameters gradients calculated during back propagation.
+        /// </summary>
+        public Dictionary<string, NDArray> Grads { get; set; }
+
+        /// <summary>
         /// Base layer instance
         /// </summary>
         /// <param name="name"></param>
@@ -37,6 +47,7 @@ namespace NeuroSimple.Layers
         {
             Name = name;
             Parameters = new Dictionary<string, NDArray>();
+            Grads = new Dictionary<string, NDArray>();
         }
 
         /// <summary>
@@ -46,6 +57,27 @@ namespace NeuroSimple.Layers
         public virtual void Forward(NDArray x)
         {
             Input = x;
+        }
+
+        /// <summary>
+        /// Calculate the gradient of the layer. Usually a prtial derivative implemenation of the forward algorithm
+        /// </summary>
+        /// <param name="grad"></param>
+        public virtual void Backward(NDArray grad)
+        {
+            
+        }
+
+        public void PrintParams()
+        {
+            foreach (var item in Parameters)
+            {
+                item.Value.Print(string.Format("Parameter: {0}", item.Key));
+                if(Grads.ContainsKey(item.Key))
+                {
+                    Grads[item.Key].Print(string.Format("Grad: {0}", item.Key));
+                }
+            }
         }
     }
 }

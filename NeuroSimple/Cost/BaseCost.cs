@@ -15,5 +15,6 @@ namespace NeuroSimple.Cost
         }
 
         public abstract NDArray Forward(NDArray preds, NDArray labels);
+        public abstract NDArray Backward(NDArray preds, NDArray labels);
     }
 }

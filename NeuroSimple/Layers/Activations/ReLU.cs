@@ -18,5 +18,10 @@ namespace NeuroSimple.Layers.Activations
             NDArray matches = x > 0;
             Output = matches * x;
         }
+
+        public override void Backward(NDArray grad)
+        {
+            InputGrad = grad * (Input > 0);
+        }
     }
 }

@@ -88,15 +88,27 @@ namespace NeuroSimple.Test
             var preds = fc2.Output;
             preds.Print("Predictions");
 
-            //Calculate mean square error cost between predicted and expected values
-            BaseCost cost = new MeanSquaredError();
+            //Calculate mean square error between predicted and expected values
+            BaseCost cost = new BinaryCrossEntropy();
             var costValues = cost.Forward(preds, y);
-            costValues.Print("MSE Cost");
+            costValues.Print("BCE Cost");
 
             //Calculate the mean absolute value for the predicted vs expected values
-            BaseMetric metric = new MeanAbsoluteError();
+            BaseMetric metric = new BinaryAccuracy();
             var metricValues = metric.Calculate(preds, y);
-            metricValues.Print("MAE Metric");
+            metricValues.Print("Acc Metric");
+
+            //Backpropagation starts here
+            //Calculate gradient cost function
+            var grad = cost.Backward(preds, y);
+            //Then the fc2 layer by passing cost function grad into the layer backward function
+            fc2.Backward(grad);
+            //The grad of the fc2 is stored in the InputGrad property, pass it to fc1
+            fc1.Backward(fc2.InputGrad);
+
+            //Print parameters for both layers along with the Grad
+            fc1.PrintParams();
+            fc2.PrintParams();
         }
     }
 }

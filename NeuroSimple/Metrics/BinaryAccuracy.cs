@@ -4,9 +4,9 @@ using System.Text;
 
 namespace NeuroSimple.Metrics
 {
-    public class BinaryAccuacy : BaseMetric
+    public class BinaryAccuracy : BaseMetric
     {
-        public BinaryAccuacy() : base("binary_accurary")
+        public BinaryAccuracy() : base("binary_accurary")
         {
         }
 

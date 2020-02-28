@@ -16,5 +16,11 @@ namespace NeuroSimple.Cost
             var error = preds - labels;
             return Mean(Square(error));
         }
+
+        public override NDArray Backward(NDArray preds, NDArray labels)
+        {
+            double norm = 2 / preds.Shape[0];
+            return norm * (preds - labels);
+        }
     }
 }
