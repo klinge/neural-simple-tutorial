@@ -149,6 +149,14 @@ namespace NeuroSimple
             Console.WriteLine("-----------------------\n\n");
         }
 
+        public double[] Data
+        {
+            get
+            {
+                return variable;
+            }
+        }
+
         /// <summary>
         /// Addition of two NDArray
         /// </summary>
@@ -275,6 +283,23 @@ namespace NeuroSimple
             NDArray t_a = new NDArray(b.Shape);
             t_a.Fill(a);
             return t_a / b;
+        }
+
+        /// <summary>
+        /// Negates the values in the tensor
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static NDArray operator -(NDArray a)
+        {
+            NDArray r = new NDArray(a.Shape);
+
+            for (int i = 0; i < a.Elements; i++)
+            {
+                r[i] = -a[i];
+            }
+
+            return r;
         }
 
         /// <summary>
